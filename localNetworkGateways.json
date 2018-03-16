@@ -26,6 +26,13 @@
       "metadata": {
         "description": "Resource name."
       }
+    },
+    "DependsOn": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Pass dependencies"
+      }
     }
   },
   "variables": {
@@ -52,6 +59,7 @@
       "name": "[parameters('name')]",
       "type": "Microsoft.Network/localNetworkGateways",
       "location": "[resourceGroup().location]",
+      "dependsOn": "[if(empty(parameters('DependsOn')),json('null'),parameters('DependsOn'))]",
       "properties": "[if(empty(parameters('bgpSettings').bgpPeeringAddress),variables('lgnProperties')[0],variables('lgnProperties')[1])]"
     }
   },
@@ -61,6 +69,7 @@
       "name": "[parameters('name')]",
       "type": "Microsoft.Network/localNetworkGateways",
       "location": "[resourceGroup().location]",
+      "dependsOn": "[if(empty(parameters('DependsOn')),json('null'),parameters('DependsOn'))]",
       "properties": "[if(empty(parameters('bgpSettings').bgpPeeringAddress),variables('lgnProperties')[0],variables('lgnProperties')[1])]"
     }
   ],
