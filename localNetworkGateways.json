@@ -63,16 +63,7 @@
       "properties": "[if(empty(parameters('bgpSettings').bgpPeeringAddress),variables('lgnProperties')[0],variables('lgnProperties')[1])]"
     }
   },
-  "resources": [
-    {
-      "apiVersion": "2017-09-01",
-      "name": "[parameters('name')]",
-      "type": "Microsoft.Network/localNetworkGateways",
-      "location": "[resourceGroup().location]",
-      "dependsOn": "[if(empty(parameters('DependsOn')),json('null'),parameters('DependsOn'))]",
-      "properties": "[if(empty(parameters('bgpSettings').bgpPeeringAddress),variables('lgnProperties')[0],variables('lgnProperties')[1])]"
-    }
-  ],
+  "resources": [ ],
   "outputs": {
     "localNetworkGateway": {
       "type": "object",
